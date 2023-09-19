@@ -6,6 +6,8 @@ public class StrOperation {
 		System.out.println(name.toUpperCase());
 		String s2 = name.toLowerCase();
 		System.out.println(s2);
+		System.out.println("hai");
+		
 		
 	}
 	
