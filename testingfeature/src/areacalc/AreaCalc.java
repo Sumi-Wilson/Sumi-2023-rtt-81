@@ -7,6 +7,7 @@ public class AreaCalc {
 		radius=20;
 		area=radius*radius*3.14;
 		System.out.println("area is" + area);
+		System.out.println("testing");
 		
 	}
 
