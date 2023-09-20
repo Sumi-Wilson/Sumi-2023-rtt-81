@@ -60,6 +60,22 @@ public class JavaBasicsClass {
 		double area = PI*radius*radius;
 		System.out.println("Area is :"+area);
 		
+		//coffe shop program
+		
+		double coffee = 3.35;
+		double greenTea =2.75;
+		double espreso = 5.25;
+		double subtotal;
+		double totalSale;
+		subtotal =((3*coffee)+(4*greenTea)+(2*espreso));
+		final double SALES_TAX = .19;
+		totalSale = subtotal + (subtotal*SALES_TAX/100);
+		System.out.println("Total sale is :" + totalSale);
+		System.out.println("Total sale is :" + totalSale);
+		System.out.println("Total sale formated is :" + String.format("%.2f",totalSale));
+		
+		
+		
 		
 		
 		
