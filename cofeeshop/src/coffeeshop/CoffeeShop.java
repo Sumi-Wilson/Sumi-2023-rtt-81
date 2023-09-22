@@ -11,6 +11,7 @@ public class CoffeeShop {
 	// List of items in your order
 	List<Product> order = new ArrayList<>();
 	Scanner input = new Scanner(System.in);
+	DecimalFormat df = new DecimalFormat("$00.00");
 
 	// setting values
 	public void setupProducts() {
@@ -39,8 +40,8 @@ public class CoffeeShop {
 
 	public void printProduct(Product product) {
 
-		System.out.println("product name:\t" + product.getName() + "\t price:$" + product.getPrice()+"\n");
-		
+		//System.out.println("product name:\t" + product.getName() + "\t price:$" + product.getPrice()+"\n");
+		System.out.println("Product name : " + product.getName() + "\tPrice : " +df.format(product.getPrice())+"\n");
 
 	}
 
@@ -60,7 +61,7 @@ public class CoffeeShop {
 		subTotal = subTotal + (tea * 1);
 		subTotal = subTotal + (cookie * 1);
 		// System.out.println("subtotal is : "+ subTotal);
-		DecimalFormat df = new DecimalFormat("00.00");
+		//DecimalFormat df = new DecimalFormat("$00.00");
 		System.out.println("Subtotal is\t" + df.format(subTotal));
 		double salesTax = subTotal * 0.10;
 		System.out.println("salesTax is \t " + df.format(salesTax));
@@ -100,8 +101,8 @@ public class CoffeeShop {
 	public void printOrder() {
 		System.out.println("\n*********** Your Order ******************");
 		for (Product order : order) {
-			System.out.println("Product name : " + order.getName() + "Price : " +"$"+ order.getPrice());
-			
+			//System.out.println("Product name : " + order.getName() + "Price : " +"$"+ order.getPrice());
+			System.out.println("Product name : " + order.getName() + "\tPrice : " +df.format(order.getPrice()));
 		}
 		System.out.println("*****************************************\n");
 	}
