@@ -30,20 +30,18 @@ public class CoffeeShop {
 		products.add(cookie);
 
 		Product sandwich = new Product();
-		sandwich.setName("Egg & Chesse Muffin");
+		sandwich.setName("Donut ");
 		sandwich.setPrice(19.99);
 		products.add(sandwich);
 
-		/*
-		 * printProduct(coffee); printProduct(tea); printProduct(cookie);
-		 */
-
-		// printAllProducts();
+		
 	}
 
 	public void printProduct(Product product) {
 
-		System.out.println("product name:\t" + product.getName() + "\t\t\t price:$" + product.getPrice());
+		System.out.println("product name:\t" + product.getName() + "\t price:$" + product.getPrice()+"\n");
+		
+
 	}
 
 	public void printAllProducts() {
@@ -92,31 +90,27 @@ public class CoffeeShop {
 			if (product.getName().equalsIgnoreCase(orderSelection)) {
 				order.add(product);
 
-				System.out.println("added " + product.getName() + " to your order ");
+				System.out.println("ADDED " + product.getName() + " TO YOUR ORDER\n ");
 
 			}
 		}
 	}
 
-	// to display items in order list
-	public void orderListDisplay() {
-		for(Product item:order) {
-		System.out.println(item);	
+	
+	public void printOrder() {
+		System.out.println("\n*********** Your Order ******************");
+		for (Product order : order) {
+			System.out.println("Product name : " + order.getName() + "Price : " +"$"+ order.getPrice());
+			
 		}
+		System.out.println("*****************************************\n");
 	}
 
 	public static void main(String[] args) {
 
 		CoffeeShop cf = new CoffeeShop();
 		cf.setupProducts();
-		/*cf.printAllProducts();
-		int userSelection =cf.displayMainUserMenu();
-		if(userSelection == 1) {
-			cf.printAllProducts();
-		}
-		else {
-			System.out.println("userselection "+userSelection +"is invalid try again");
-		}*/
+		
 		
 		while(true) {
 			int userSelection = cf.displayMainUserMenu();
@@ -128,7 +122,7 @@ public class CoffeeShop {
 				
 		          
 			}else if(userSelection == 3) {
-			   cf.orderListDisplay();
+			   cf.printOrder();
 			}else if(userSelection == 5) {
 				System.exit(0);	
 			}else {
