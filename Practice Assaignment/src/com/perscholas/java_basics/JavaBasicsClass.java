@@ -71,7 +71,6 @@ public class JavaBasicsClass {
 		final double SALES_TAX = .19;
 		totalSale = subtotal + (subtotal*SALES_TAX/100);
 		System.out.println("Total sale is :" + totalSale);
-		System.out.println("Total sale is :" + totalSale);
 		System.out.println("Total sale formated is :" + String.format("%.2f",totalSale));
 		
 		
