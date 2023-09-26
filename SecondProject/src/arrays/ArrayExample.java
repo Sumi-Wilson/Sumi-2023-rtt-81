@@ -36,6 +36,7 @@ public class ArrayExample {
 
 		}
 		System.out.println("Position of the first null is " + firstNull);
+		// Home Work
 
 		// ***write a loop to tell how many values are not null****
 		int notNullCount = 0;
@@ -63,8 +64,22 @@ public class ArrayExample {
 			System.out.println("the value in position " + i + " is " + stringArray[i]);
 
 		}
+		// Last null position in efficient way
+		int lastNull1 = -1;
+		for (int pos = stringArray.length - 1; pos >= 0; pos--) {
+			if (stringArray[pos] == null) {
+				lastNull1 = pos;
+
+				break;
+
+			}
+
+		}
+		System.out.println("last null positio " + lastNull1);
 
 		// *****use letters.split(",") to make an array of letters****
+		// *****loop over the array and count the number of letters that are not
+		// vowels*****
 		String letters = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
 		String[] array1 = letters.split(",");
 		int countConsonats = 26;
@@ -72,37 +87,29 @@ public class ArrayExample {
 			// System.out.println(item1);
 			if (item1.contains("a")) {
 				countConsonats = countConsonats - 1;
-			}
-			else if(item1.contains("e")) {
-					countConsonats = countConsonats - 1;
-			}
-			else if(item1.contains("i")) {
+			} else if (item1.contains("e")) {
 				countConsonats = countConsonats - 1;
-			}
-			else if(item1.contains("o")) {
+			} else if (item1.contains("i")) {
 				countConsonats = countConsonats - 1;
-			}
-			else if(item1.contains("u")) {
+			} else if (item1.contains("o")) {
+				countConsonats = countConsonats - 1;
+			} else if (item1.contains("u")) {
 				countConsonats = countConsonats - 1;
 			}
 
 		}
+		System.out.println("no of consontats " +countConsonats);
 
-		System.out.println("Number of letters not vowels are " + countConsonats);
-		/*String letters = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
-		String[] array1 = letters.split(",");
-		int countConsonats = 26;
-		for(int j=0;j<array1.length;j++) {
-			//System.out.println(array1[j]);
-			if(array1[j]=="a") {
-				System.out.println("hai");
-				countConsonats = countConsonats - 1;
-				
+		int n1 = 0;
+		String vowel = "aeiou";
+		for (String letter : array1) {
+			if (!vowel.contains(letter)) {
+				n1 = n1 + 1;
 			}
+
 		}
-		System.out.println("Number of letters not vowels are " + countConsonats);*/
+		System.out.println("number of consonats " + n1);
 
 	}
-		
-		
+
 }
