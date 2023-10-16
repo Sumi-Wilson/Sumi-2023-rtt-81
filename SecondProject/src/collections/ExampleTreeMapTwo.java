@@ -16,6 +16,9 @@ public class ExampleTreeMapTwo {
 		numbers.put("Second", 2);
 		numbers.put("Third", 3);
 		System.out.println("TreeMap: " + numbers);
+		for (String key : numbers.keySet()) {
+			System.out.println(numbers.get(key));
+		}
 
 		// Using firstKey() Method
 		String s1 = numbers.firstKey();
@@ -30,11 +33,9 @@ public class ExampleTreeMapTwo {
 		// Using the lastKey() method
 		String lastKey = numbers.lastKey();
 		System.out.println("Last Key: " + lastKey);
-		
-		//for(String key:numbers) {
-			
-		}
+
+		// for(String key:numbers) {
 
 	}
 
-
+}

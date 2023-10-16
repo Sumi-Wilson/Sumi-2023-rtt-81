@@ -13,7 +13,7 @@ public class SplitDemo {
 		// converting array to string and printing it
 		System.out.println("result = " + Arrays.toString(result));
 		String csv ="a,b,c,d,e,f,g,h";
-		String[]commas=csv.split("");
+		String[]commas=csv.split(",");
 		System.out.println("Result = " +Arrays.toString(commas));
 		
 		String name ="Sumi Wilson";

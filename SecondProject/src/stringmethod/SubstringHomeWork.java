@@ -17,7 +17,36 @@ public class SubstringHomeWork {
 		// ===================================================
 		
 		
-		// do the same thing to find the substring of the first and last vowel of the string
+		// do the same thing to find the substring between the first and last vowel of the string
+		
+		int lastVowelPosition = 0;
+		int firstVowelPosition = 0;
+		for (int i = 0; i < example.length(); i++) {
+			if (example.charAt(i) == 'a' || example.charAt(i) == 'e' || example.charAt(i) == 'i'
+					|| example.charAt(i) == 'o' || example.charAt(i) == 'u') {
+				firstVowelPosition = i;
+				break;
+				// lastVowelPosition=example.lastIndexOf(i);
+			}
+		}
+		for(int j=0;j<example.length();j++)
+		{
+			
+			
+		if (example.charAt(j) == 'a' || example.charAt(j) == 'e' || example.charAt(j) == 'i'
+					|| example.charAt(j) == 'o' || example.charAt(j) == 'u') {
+				lastVowelPosition=j;
+				
+			}
+		}
+		System.out.println("\n\nSubstring between the first and last vowel of the string: "
+				+ example.substring(firstVowelPosition, lastVowelPosition));
+
+
+		
+		
+		
+		
 		
 		
 		
@@ -27,6 +56,7 @@ public class SubstringHomeWork {
 
 		for (int i = 0; i <= example.length() - 1; i++) {
 			char char1 = example.charAt(i);
+			
 			System.out.println(char1);
 		}
 

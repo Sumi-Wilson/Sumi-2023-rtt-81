@@ -11,22 +11,27 @@ public class Calculator {
 		Calculator c = new Calculator();
 		//int userSelction = c.menu();
 		while (true) {
+			
+			
+			
 			int userSelection = c.menu();
+			double num1 = c.input();
+			double num2 = c.input();
 			if (userSelection == 1) {
-				double sum = c.addition();
+				double sum = c.addition(num1,num2);
 				System.out.println("the sum is: " + sum);
 
 			}
 			else if (userSelection == 2) {
-				double diff = c.subtraction();
+				double diff = c.subtraction(num1,num2);
 				System.out.println("the diffrence is: " + diff);
 			}
 			else if (userSelection == 3) {
-				double product = c.multiplication();
+				double product = c.multiplication(num1,num2);
 				System.out.println("the product is: " + product);
 			}
 			else if (userSelection == 4) {
-				double quotient = c.division();
+				double quotient = c.division(num1,num2);
 				System.out.println("the division is: " + quotient);
 			} 
 			else if(userSelection == 5) {
@@ -52,46 +57,52 @@ public class Calculator {
 
 	}
 
-	public double addition() {
-		System.out.println("enter first number: ");
+	public double addition(double n1,double n2) {
+		/*System.out.println("enter first number: ");
 		double num1 = input.nextDouble();
 		System.out.println("enter first number: ");
-		double num2 = input.nextDouble();
+		double num2 = input.nextDouble();*/
 
-		double ans = num1 + num2;
+		double ans = n1 + n2;
 		return ans;
 
 	}
 
-	public double subtraction() {
+	public double subtraction(double n1,double n2) {
 
-		System.out.println("enter first number: ");
+		/*System.out.println("enter first number: ");
 		double num1 = input.nextDouble();
 		System.out.println("enter first number: ");
-		double num2 = input.nextDouble();
-		double ans = num1 - num2;
+		double num2 = input.nextDouble();*/
+		double ans = n1 - n2;
 		return ans;
 
 	}
 
-	public double multiplication() {
-		System.out.println("enter first number: ");
+	public double multiplication(double n1,double n2) {
+		/*System.out.println("enter first number: ");
 		double num1 = input.nextDouble();
 		System.out.println("enter first number: ");
-		double num2 = input.nextDouble();
-		double ans = num1 * num2;
+		double num2 = input.nextDouble();*/
+		double ans = n1 * n2;
 		return ans;
 
 	}
 
-	public double division() {
-		System.out.println("enter first number: ");
+	public double division(double n1,double n2) {
+		/*System.out.println("enter first number: ");
 		double num1 = input.nextDouble();
 		System.out.println("enter first number: ");
-		double num2 = input.nextDouble();
-		double ans = num1 / num2;
+		double num2 = input.nextDouble();*/
+		double ans = n1 / n2;
 		return ans;
 
+	}
+	public double input() {
+		System.out.println("enter number: ");
+		double n = input.nextDouble();
+		return n;
+		
 	}
 
 }
