@@ -3,9 +3,12 @@ package org.perscholas.database.entity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,37 +18,48 @@ import javax.persistence.TemporalType;
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name= "customer_id")
+
+	@Column(name = "customer_id", insertable = false, updatable = false)
 	private Integer customerId;
-	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "customer_id", nullable = false)
+	private Customer customer;
+
 	@Column(name = "order_date")
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
-	
+
 	@Column(name = "required_date")
 	@Temporal(TemporalType.DATE)
 	private Date requiredDate;
-	
+
 	@Column(name = "shipped_date")
 	@Temporal(TemporalType.DATE)
 	private Date shippedDate;
-	
-	@Column(name ="status")
+
+	@Column(name = "status")
 	private String status;
-	
-	@Column(name ="comments",columnDefinition = "text")
-	private Integer comments;
 
+	@Column(name = "comments", columnDefinition = "text")
+	private String comments;
 
-	public Integer getComments() {
+	public String getComments() {
 		return comments;
 	}
 
-	public void setComments(Integer comments) {
+	public void setComments(String comments) {
 		this.comments = comments;
 	}
 
@@ -97,8 +111,4 @@ public class Order {
 		this.status = status;
 	}
 
-	}
-	
-	
-
-
+}
