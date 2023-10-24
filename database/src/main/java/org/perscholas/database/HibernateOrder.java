@@ -1,5 +1,7 @@
 package org.perscholas.database;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -15,12 +17,19 @@ public class HibernateOrder {
 
 	// Order o = new Order();
 	public static void main(String[] args) {
+		HibernateOrder hc = new HibernateOrder();
 		// Order o = new Order();
 		System.out.println("enter a user id");
 		Scanner sc = new Scanner(System.in);
 		int i = sc.nextInt();
-		HibernateOrder hc = new HibernateOrder();
-		hc.createNewOrder(i);
+		try {
+			hc.createNewOrder(i);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		hc.queryOrder();
+		
 	}
 
 	public void queryOrder() {
@@ -34,7 +43,7 @@ public class HibernateOrder {
 
 	}
 
-	public void createNewOrder(int i) {
+	public void createNewOrder(int i) throws ParseException {
 		// Order o = orderDao.findById(i);
 		Customer c = customerDao.findById(i);
 		if (c != null) {
@@ -42,13 +51,23 @@ public class HibernateOrder {
 			//o.setCustomerId(i);
 			o.setCustomer(c);
 			Date orderDate = new Date();
-			Date requiredDate = new Date();
-			// SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd);
-			// Date requiredDate =
+			o.setOrderDate(orderDate);
+			//Date requiredDate = new Date();
+			 SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+			Date requiredDate ;
+			try {
+				requiredDate = sdf.parse("2023-10-31");
+				o.setRequiredDate(requiredDate);
+
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			// SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			// Date requredDate = sdf.parse("2023-10-31");
-			o.setOrderDate(orderDate);
-			o.setRequiredDate(requiredDate);
+			
+			//o.setRequiredDate(requiredDate);
 			o.setShippedDate(null);
 			o.setStatus("pending");
 			o.setComments("shipping needed");
