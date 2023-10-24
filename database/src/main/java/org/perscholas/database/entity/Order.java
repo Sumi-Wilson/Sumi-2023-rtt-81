@@ -1,6 +1,9 @@
 package org.perscholas.database.entity;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,9 +25,27 @@ public class Order {
 
 	@Column(name = "id")
 	private Integer id;
+	
+	 @OneToMany(mappedBy = "order", fetch = FetchType.LAZY,
+	            cascade = CascadeType.ALL)
+	    private List<OrderDetail> orderdetails;
+
+	public List<OrderDetail> getOrderdetails() {
+		return orderdetails;
+	}
+
+	public void setOrderdetails(List<OrderDetail> orderdetails) {
+		this.orderdetails = orderdetails;
+	}
+
+
 
 	@Column(name = "customer_id", insertable = false, updatable = false)
 	private Integer customerId;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "customer_id", nullable = false)
+	private Customer customer;
 
 	public Customer getCustomer() {
 		return customer;
@@ -33,9 +55,7 @@ public class Order {
 		this.customer = customer;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "customer_id", nullable = false)
-	private Customer customer;
+	
 
 	@Column(name = "order_date")
 	@Temporal(TemporalType.DATE)

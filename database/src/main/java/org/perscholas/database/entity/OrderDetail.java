@@ -2,9 +2,12 @@ package org.perscholas.database.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +19,12 @@ public class OrderDetail {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "order_id")
+	@Column(name = "order_id",insertable = false,updatable = false)
 	private Integer OrderId;
+	
+	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	    @JoinColumn(name = "order_id", nullable = false)
+	    private Order order;
 	
 	@Column(name = "product_id")
 	private Integer ProductId;
@@ -30,6 +37,16 @@ public class OrderDetail {
 	
 	@Column(name = "order_line_number")
 	private Short orderLineNumber;
+	
+	
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
 	public Integer getId() {
 		return id;
