@@ -51,7 +51,7 @@ public class ProductDAO {
 		TypedQuery<Product> query = session.createQuery(hql, Product.class);
 		query.setParameter("name", name);
 		List<Product> result = query.getResultList();
-		session.close();
+		//session.close();
 		
 		return result;
 //	
@@ -64,7 +64,7 @@ public class ProductDAO {
 		TypedQuery<Product> query = session.createQuery(hql, Product.class);
 		query.setParameter("name", "%" + name + "%");
 		List<Product> result = query.getResultList();
-		session.close();
+		//session.close();
 		return result;
 		
 
