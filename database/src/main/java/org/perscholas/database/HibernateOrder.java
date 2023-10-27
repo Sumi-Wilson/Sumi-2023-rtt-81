@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
 import org.perscholas.databae.dao.CustomerDAO;
 import org.perscholas.databae.dao.OrderDAO;
 import org.perscholas.database.entity.Customer;
@@ -49,6 +48,7 @@ public class HibernateOrder {
 		if (c != null) {
 			Order o = new Order();
 			//o.setCustomerId(i);
+			// when i want a customer to the order i need to customer object
 			o.setCustomer(c);
 			Date orderDate = new Date();
 			o.setOrderDate(orderDate);

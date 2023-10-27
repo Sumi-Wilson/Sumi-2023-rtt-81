@@ -11,9 +11,12 @@ import org.hibernate.cfg.Configuration;
 import org.perscholas.database.entity.Order;
 
 public class OrderDAO {
+	
+	 private SessionFactory factory = new Configuration().configure().buildSessionFactory();
+	 private Session session = factory.openSession();
 	public Order findById(Integer id) {
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
-		Session session = factory.openSession();
+		//SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		//Session session = factory.openSession();
 
 		//String hql = "FROM Order o WHERE o.id = ?1"; // Example of HQL to get all records of user class
 		String hql = "FROM Order o WHERE o.id = :orderid";

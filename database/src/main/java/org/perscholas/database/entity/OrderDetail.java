@@ -85,9 +85,9 @@ public class OrderDetail {
 //		ProductId = productId;
 //	}
 //
-//	public Integer getQuantityOrdered() {
-//		return quantityOrdered;
-//	}
+	public Integer getQuantityOrdered() {
+		return quantityOrdered;
+	}
 
 	public void setQuantityOrdered(Integer quantityOrdered) {
 		this.quantityOrdered = quantityOrdered;

@@ -39,7 +39,7 @@ public class HibernateProduct {
 		// looks up a product by a productName
 		List<Product> products = productDao.findByName(productName);
 		if (products.size() == 0) {
-			System.out.println("You did not enter a valid proper product name");
+			System.out.println("You did not enter a valid  product name");
 			System.exit(0);
 		}
 		// the query for product name can return more that one product with the same
