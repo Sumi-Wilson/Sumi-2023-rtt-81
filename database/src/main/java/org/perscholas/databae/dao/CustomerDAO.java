@@ -58,5 +58,15 @@ public class CustomerDAO {
 		t.commit();
 
 	}
+	
+	public Customer updateFirstName(Integer id, String firstName) {
+		Customer save = findById(id);
+		
+		//save.setContactFirstname(firstName);
+		save.setContactFirstName(firstName);
+
+		//return save(save);
+		return save;
+	}
 
 }
