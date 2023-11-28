@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- this is the script for select dropdown -->
+
+    <style>
+        select {
+            width: 150px;
+            padding: 5px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .image-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: 200px;
+            margin-right: 20px;
+        }
+
+        .image-description {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+       
+    </style>
+
+    <!-- this is the end of line code for select dropdown -->
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html"><img src="../images/Kerala_Tourism_Logo.png" height="70px" width="70px"></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="Login.html">Login</a>
+                <a href="Register.html">Register</a>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <section div class="banner_container">
+            <div class="container">
+                <div class="left_section">
+
+                    <h1>KERALA TOURISM</h1>
+                    <p>Kerala is renowned for some of its unique cultural and geographical characteristics.
+                        The practices and traditions handed down from generation to generation,
+                        alongside some of the natural wonders that we have been blessed with have attracted
+                        people to this land for centuries. From the ancient healthcare system of Ayurveda to
+                        our picturesque hill stations and diverse wildlife, we provide you with links
+                        to access a wide range of our specialities.
+                        We believe it is our duty to share these gifts with the rest of the world. </p>
+
+                </div>
+                <div class="right_section">
+                    <h4>Kerala Tourism Destination</h4>
+
+                    <!-- this code is for select your destination -->
+
+                    <select id="image-select">
+                        <option value="default">Select Destination</option>
+                        <option value="image1">Palakkad</option>
+                        <option value="image2">Wayanad</option>
+                        <option value="image3">Thrissur</option>
+                    </select>
+
+                    <div id="image-container" class="image-container">
+
+                        <table>
+                            <tr>
+                                <td><img id="image-display" src="" alt="selected-image"></td>
+                                <td>
+                                    <p id="image-description"></p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer style="background-color: lightblue; text-align:center">
+        <p>Copyright &copy; 2023 keralatourism.com</p>
+    </Footer>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
