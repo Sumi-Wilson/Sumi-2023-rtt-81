@@ -96,7 +96,7 @@ public class CreateOrderDetails {
 			OrderDetail od1 = new OrderDetail();
 			od1.setProduct(p);
 			od1.setOrder(o);
-			od1.setOrder(o);
+			//od1.setOrder(o);
 			od1.setProduct(p);
 			od1.setQuantityOrdered(25);
 			od1.setPriceEach(20.25);

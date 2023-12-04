@@ -17,12 +17,12 @@ public class Employee {
     private Integer id;
 
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
 
     @Column(name = "department_name")
-    private String department_name;
+    private String departmentName;
 
 }

@@ -42,6 +42,7 @@ public class SMSRunner {
 			break;
 		case 2:
 			System.out.println("Goodbye!");
+			System.exit(0);
 			break;
 
 		default:
@@ -64,13 +65,14 @@ public class SMSRunner {
 		System.out.print("Enter your password: ");
 		String password = sin.next();
 		Student students = studentService.getStudentByEmail(email);
+
 		if (students != null) {
 
 			currentStud = students.getsEmail();
 			currentPassword = students.getsPass();
-
 		}
-		if (currentStud != null & currentPassword != null) {
+
+		if (currentStud != null && students.getsPass().equals(password)) {
 			List<Course> courses = studentService.getStudentCourses(email);
 			System.out.println("MyClasses");
 			/*
@@ -84,6 +86,7 @@ public class SMSRunner {
 			retValue = true;
 		} else {
 			System.out.println("User Validation failed. GoodBye!");
+			System.exit(0);
 		}
 		return retValue;
 	}

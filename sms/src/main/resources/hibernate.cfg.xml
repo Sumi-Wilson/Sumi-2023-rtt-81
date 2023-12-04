@@ -10,12 +10,12 @@
 		<property name="connection.password">password</property>
 		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
-		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">true</property>
-		
+
 		<mapping class="jpa.entitymodels.Student" />
 		<mapping class="jpa.entitymodels.Course" />
 		<mapping class="jpa.entitymodels.StudentCourse" />
-		
+
 	</session-factory>
 </hibernate-configuration>
