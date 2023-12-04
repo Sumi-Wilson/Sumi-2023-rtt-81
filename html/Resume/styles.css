@@ -1,0 +1,251 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: black;
+}
+
+#main_container {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+
+}
+
+#section1 {
+    width: 500 px;
+    height: 200 px;
+    /* background-color: white; */
+    display: flex;
+
+}
+
+#box1 img {
+
+    width: 150px;
+
+
+}
+
+#box2 {
+    flex: 2;
+    text-align: left;
+    font-size: small;
+    /* background-color: white; */
+
+}
+
+#box3 {
+    flex: 2;
+    text-align: center;
+    font-size: small;
+}
+
+#biography {
+
+    width: 100%;
+    font-size: smaller; 
+
+}
+
+#biography,p {
+
+    /* width: 100%; */
+    
+
+}
+
+#paragraph-bio {
+    width: 100%;
+    font-size: smaller; 
+
+
+
+}
+
+#employment_skills {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 200 px;
+}
+
+#employment {
+    flex: 2;
+}
+
+#employment,
+p {
+    width: 100%;
+    font-size: smaller;
+
+}
+
+#employment h2 {
+
+
+    background-color: aquamarine;
+
+
+}
+
+#skills {
+    /* display: flex; */
+    /* flex-direction: column; */
+    flex: 2;
+    text-align: left;
+}
+
+#education_skills {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 200 px;
+
+}
+
+#education {
+    flex: 2;
+}
+
+#education,
+p {
+
+    width: 300px;
+    font-size: smaller;
+
+
+}
+
+#skills1 {
+    flex: 2;
+    text-align: left;
+}
+
+
+.progress_bar1::-webkit-progress-bar {
+    background: blue;
+}
+
+.progress_bar2::-webkit-progress-bar {
+    background: green;
+}
+
+/* #file {
+    background-color: #ffc107;
+    width: 60%;
+    height: 10px;
+
+
+} */
+
+.progress_bar3::-webkit-progress-bar {
+    background: pink;
+}
+
+.progress_bar4::-webkit-progress-bar {
+    background: red;
+}
+
+.progress_bar1 {
+
+
+    width: 20%;
+    height: 10px;
+    border-radius: 4px;
+
+}
+
+.label1 {
+    text-align: center;
+    color: #000;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+}
+
+.progress_bar2 {
+    background-color: #000;
+    width: 70%;
+    height: 10px;
+
+}
+
+.progress_bar3 {
+    background-color: #ffc107;
+    width: 60%;
+    height: 10px;
+}
+
+.progress_bar4 {
+    background-color: black;
+    width: 80%;
+    height: 10px;
+
+}
+
+.button1 {
+    background-color: green;
+    width: 1px;
+    height: 1px;
+    text-align: start;
+}
+
+.button2 {
+    background-color: red;
+    width: 0px;
+    height: 1px;
+}
+
+.button3 {
+    background-color: rgb(132, 0, 255);
+    width: 0px;
+    height: 1px;
+}
+
+.button4 {
+    background-color: rgb(0, 255, 64);
+    width: 0px;
+    height: 1px;
+}
+
+.circleblue {
+
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+#dot {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    text-align: left;
+}
+
+.circlegrey {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: grey;
+
+}
+
+.circlegreen {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: green;
+
+}
+
+.circlered {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: lightcoral
+}
