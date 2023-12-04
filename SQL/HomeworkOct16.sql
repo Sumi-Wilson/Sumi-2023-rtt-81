@@ -4,7 +4,16 @@ select max(payment_date)from payments;
 -- doubt dont work with >
 select c.customer_name ,o.id from customers c,orders o
 where order_date < (select max(payment_date)from payments); 
-
+select c.customer_name, o.customer_id, o.order_date
+	from customers c
+	join orders o ON c.id = o.customer_id
+	where o.order_date > (
+		select MAX(payment_date)
+		from payments p
+		where p.customer_id = c.id
+	);
+select c.customer_name,o.id from customers c,orders o where c.id=o.customer_id 
+ and o.order_date>(select max(p.payment_date) from payments p where p.customer_id=o.customer_id);
 
 select id from offices where state is   not null;
 
@@ -14,17 +23,39 @@ from employees
 where employees.office_id
 in(select id from offices where state is not null)
 order by firstname;
+-- by jancy
+select e.firstname, e.lastname 
+from classic_models.employees e, classic_models.offices o
+where e.office_id = o.id
+and state is not null;
+ 
+ -- by  getu
+ select e.id, e.firstname, e.lastname, e.office_id, o.state
+	from employees e 
+	join offices o on e.office_id = o.id
+	where o.state is not null;
+    select firstname from employees e,offices o
+    where e.office_id = o.id 
+    and o.state is not null;
 
 select * from productlines;
 select id from  productlines p where p.product_line='Planes' or p.product_line='Ships' or p.product_line='Trains';
 
 
 -- QN:3  I want to all of the products that are not ground vehicles.   Hint -  where not in a select statement from product line
-select product_name,productline_id  
+select product_name ,productline_id
 from products 
 where productline_id 
-in(select id from  productlines p where p.product_line='Planes' or p.product_line='Ships' or p.product_line='Trains')
-order by product_name;
+in(select id from  productlines p where p.product_line='Planes' or p.product_line='Ships' students);
+
+-- enhancing the query
+select product_name,product_line
+ from products p,productlines pl
+where p.productline_id = pl.id
+and( pl.product_line='Planes' or pl.product_line='ships' or  pl.product_line='Trains') 
+  order by product_name;
+ 
+ select * from productlines;
 
 
 -- QN:3a I want to see a unique list of the order status
@@ -39,6 +70,14 @@ from orderdetails
 where order_id 
 in(select id from orders where status != 'shipped');
 select id from orders where status != 'shipped';
+-- enhancing and correcting
+
+select product_name from products p,orderdetails od1
+where p.id = od1.product_id
+and od1.order_id in 
+(select od.id from orderdetails od,orders o
+where( od.order_id= o.id
+and o.status != 'shipped'));
 
 -- QN: 5 The product name, and quantity ordered for all orders that are on holed or in process
 -- i dont know how to get product name from products ask doubt
@@ -62,7 +101,8 @@ select e.firstname,c.customer_name
 from employees e
 left join
 customers c
-on e.id = c.sales_rep_employee_id;
+on e.id = c.sales_rep_employee_id
+order by e.id;
 
 
 
