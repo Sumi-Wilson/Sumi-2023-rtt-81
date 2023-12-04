@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../Resume"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../Day2-Demo"
+		},
+		{
+			"path": "../../wiki_clone"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "day_one"
+	}
+}
