@@ -1,5 +1,6 @@
 package org.perscholas.springboot.controller;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.dao.EmployeeDAO;
 import org.perscholas.springboot.database.entity.Customer;
@@ -10,6 +11,8 @@ import org.perscholas.springboot.service.CustomerService;
 import org.perscholas.springboot.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,12 +28,13 @@ public class EmployeeController {
     private EmployeeDAO employeeDao;
     @Autowired
     private EmployeeService employeeService;
+
     @GetMapping("/employee/edit/{id}")
-    public ModelAndView editCustomer(@PathVariable int id){
+    public ModelAndView editCustomer(@PathVariable int id) {
         ModelAndView response = new ModelAndView("employee/create");
         Employee employee = employeeDao.findById(id);
         CreateEmployeeFormBean form = new CreateEmployeeFormBean();
-        if (employee != null){
+        if (employee != null) {
             form.setId(employee.getId());
             form.setFirstName(employee.getFirstName());
             form.setLastName(employee.getLastName());
@@ -38,28 +42,36 @@ public class EmployeeController {
         } else {
             log.warn("Customer with id " + id + "was not found");
         }
-        response.addObject("form",form);
+        response.addObject("form", form);
         return response;
     }
+
     @GetMapping("/employee/create")
-    public ModelAndView createEmployee(){
+    public ModelAndView createEmployee() {
         ModelAndView response = new ModelAndView("employee/create");
         log.info("In create employee with no args");
         return response;
     }
+
     @GetMapping("/employee/createSubmit")
-    public ModelAndView createCustomerService(CreateEmployeeFormBean form) {
-        ModelAndView response = new ModelAndView("employee/create");
+    public ModelAndView createCustomerService(@Valid CreateEmployeeFormBean form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            ModelAndView response = new ModelAndView("employee/create");
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                log.info("Error: " + error.getDefaultMessage());
+            }
+            response.addObject("form", form);
+            response.addObject("errors", bindingResult);
+            return response;
 
-//        log.info("FirstName: " + form.getFirstName());
-//        log.info("LastName: " + form.getLastName());
-//        log.info("DepartmentName: " + form.getDepartmentName());
-
+        }
+        ModelAndView response = new ModelAndView("/employee/create");
         employeeService.createEmployee(form);
         log.info("In create employee with incoming args");
         return response;
-
     }
+
+
 
      @GetMapping("/employee/search")
      public ModelAndView search(@RequestParam(required = false) String firstName,

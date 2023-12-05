@@ -18,6 +18,7 @@ public class CreateCustomerFormBean {
 
     @NotEmpty(message = "Last name is required.")
     @Length(max = 45,message =  "Last name must be less than 45 characters.")
+    @Pattern(regexp = "[a-zA-Z]+" , message = "First Name must contain only letters")
     private String lastName;
 
     @Length(max = 45,message =  "Phone must be less than 45 characters.")
