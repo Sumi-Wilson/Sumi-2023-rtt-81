@@ -10,6 +10,6 @@
 
 <body>
     <h1>Index Page</h1>
-    <p>Here is a paragraph.Adding more text to this.</p>
+    <p>Here is a Index Page.Adding more text to this.</p>
 </body>
 </html>
