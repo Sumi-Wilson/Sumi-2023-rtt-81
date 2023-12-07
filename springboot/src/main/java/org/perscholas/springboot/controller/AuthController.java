@@ -21,11 +21,17 @@ public class AuthController {
     @Autowired
     private UserService userService;
     @GetMapping("/auth/login")
-    public ModelAndView register() {
+    public ModelAndView login() {
         ModelAndView respnse = new ModelAndView();
         respnse.setViewName("auth/login");
         return respnse;
 
+    }
+    @GetMapping("/auth/register")
+    public ModelAndView register(){
+        ModelAndView response = new ModelAndView();
+        response.setViewName("auth/register");
+        return response;
     }
     @GetMapping("/auth/registerSubmit")
 
