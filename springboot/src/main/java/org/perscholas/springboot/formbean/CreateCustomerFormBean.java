@@ -27,6 +27,8 @@ public class CreateCustomerFormBean {
     @NotEmpty(message = "city is required.")
     private String city;
 
+    private String imageUrl;
+
     //@Email(message = "email is not valid email")
    // @Pattern(regexp = "^[A-Za-z0-9+_.- ]+@(.+)$",message = "Email is not valid email.")
     //privare String Email;
