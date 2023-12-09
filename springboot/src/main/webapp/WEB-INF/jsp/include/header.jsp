@@ -56,7 +56,8 @@
                  </li>
                  </sec:authorize>
                  <li class = "nav-item">
-                   <a class = "nav-link" href="/admin/index">Secured Request</a>
+                    <a class = "nav-link" href="/admin/index">Secured Request</a>
+                 </li>
             </ul>
         </div>
     </div>
