@@ -31,10 +31,11 @@ public class CustomerService {
         customer.setLastName(form.getLastName());
         customer.setPhone(form.getPhone());
         customer.setCity(form.getCity());
-        customer.setImageUrl(form.getImageUrl());
         //if want to put ur own images put them in the pub/images folder
         //when editing customer enter /pub/images/imagename.gif as ur image url in the database to display ur own image
         // altrernatively you can give full url of an image somewhere on the internet
+        customer.setImageUrl(form.getImageUrl());
+
         return customerDao.save(customer);
     }
 }

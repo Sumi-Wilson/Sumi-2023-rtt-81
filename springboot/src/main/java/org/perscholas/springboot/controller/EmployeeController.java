@@ -65,7 +65,7 @@ public class EmployeeController {
             return response;
 
         }
-        ModelAndView response = new ModelAndView("/employee/create");
+        ModelAndView response = new ModelAndView("employee/create");
         employeeService.createEmployee(form);
         log.info("In create employee with incoming args");
         return response;

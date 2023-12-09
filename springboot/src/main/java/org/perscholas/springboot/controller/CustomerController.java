@@ -126,7 +126,6 @@ public class CustomerController {
 
         // the action attribute on the form tag is set to /customer/createSubmit so this method will be called when the user clicks the submit button
     @GetMapping("/customer/createSubmit")
-
       public ModelAndView createCustomerSubmit(@Valid CreateCustomerFormBean form, BindingResult bindingResult) {
         log.info("$$$$$ in customer createSubmit $$$$$");
         if (bindingResult.hasErrors()) {
@@ -142,29 +141,11 @@ public class CustomerController {
             return response;
         }
         log.info("  in Create customer no error found");
-        //ModelAndView response = new ModelAndView("customer/create");
         Customer c = customerService.createCustomer(form);
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/customer/edit/" + c.getId() + "?success=Customer Saved Successfully");
-
-
-//        log.info("firstName: " + form.getFirstName());
-//        log.info("lastName: " + form.getLastName());
-//        log.info("phone: " + form.getPhone());
-//        log.info("city: " + form.getCity());
-
-//        Customer customer = new Customer();
-//        customer.setFirstName(form.getFirstName());
-//        customer.setLastName(form.getLastName());
-//        customer.setPhone(form.getPhone());
-//        customer.setCity(form.getCity());
-        //customerDao.save(customer);
-
-        customerService.createCustomer(form);
-
-
+        //customerService.createCustomer(form);
         log.info("In create customer with incoming args");
-
         return response;
     }
 
