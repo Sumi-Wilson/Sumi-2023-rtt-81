@@ -1,12 +1,16 @@
 package org.perscholas.springboot.controller;
 
 import io.netty.util.internal.StringUtil;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.dao.CustomerDAO;
 import org.perscholas.springboot.database.entity.Customer;
+import org.perscholas.springboot.database.entity.User;
 import org.perscholas.springboot.formbean.CreateCustomerFormBean;
+import org.perscholas.springboot.formbean.RegisterUserFormBean;
+import org.perscholas.springboot.security.AuthenticatedUserService;
 import org.perscholas.springboot.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -29,6 +33,9 @@ public class CustomerController {
     private CustomerDAO customerDao;
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
 //     @GetMapping("/customer/delete/{customerId}")
 //    public ModelAndView deleteCustomer(@PathVariable int customerId) {
 //        ModelAndView response = new ModelAndView("customer/search");
@@ -147,6 +154,21 @@ public class CustomerController {
         //customerService.createCustomer(form);
         log.info("In create customer with incoming args");
         return response;
+    }
+    @GetMapping("customer/myCustomers")
+    public ModelAndView myCustomers(){
+        log.debug("inside customer/ mycustomers");
+        ModelAndView response = new ModelAndView("customer/create");
+        User user = authenticatedUserService.loadCurrentUser();
+        //.setUserId(user.getId());
+       List<Customer> customers = customerDao.findByUserId(user.getId());
+       for(Customer customer : customers){
+           log.debug("First Name = " + customer.getFirstName() + " last name = " + customer.getLastName());
+       }
+
+        return response;
+
+
     }
 
 
