@@ -3,6 +3,8 @@ package org.perscholas.springboot.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,8 +27,14 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable());
 
         // this block of code determines which requests are authenticated
+        //any part of ur appl that requires
         http.authorizeRequests()
                 .requestMatchers(
+                        //this will make all requests to/customer/** require authetication
+                        // we will have to autheticate to user our customer search or customer create pages
+                        //new AntPathRequestMatcher("/schedule/**"),
+                        //new AntPathRequestMatcher("/order/**"),
+                        new AntPathRequestMatcher("/customer/**"),
                         new AntPathRequestMatcher("/admin/**"),
                         new AntPathRequestMatcher("/user/**")).authenticated()
                 .anyRequest().permitAll();
@@ -52,6 +60,11 @@ public class SecurityConfig {
     @Bean(name = "passwordEncoder")
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
     }
 
 }

@@ -1,11 +1,13 @@
 package org.perscholas.springboot.controller;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.springboot.database.entity.Customer;
 import org.perscholas.springboot.database.entity.User;
 import org.perscholas.springboot.formbean.CreateCustomerFormBean;
 import org.perscholas.springboot.formbean.RegisterUserFormBean;
+import org.perscholas.springboot.security.AuthenticatedUserService;
 import org.perscholas.springboot.service.CustomerService;
 import org.perscholas.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class AuthController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
     @GetMapping("/auth/login")
     public ModelAndView login() {
         ModelAndView respnse = new ModelAndView();
@@ -35,7 +40,7 @@ public class AuthController {
     }
     @GetMapping("/auth/registerSubmit")
 
-    public ModelAndView createCustomerSubmit(@Valid RegisterUserFormBean form, BindingResult bindingResult) {
+    public ModelAndView createCustomerSubmit(@Valid RegisterUserFormBean form, BindingResult bindingResult , HttpSession session) {
         log.info("$$$$$ in auth registerSubmit $$$$$");
         if (bindingResult.hasErrors()) {
             log.info("######################### In registerSubmit- has errors #########################");
@@ -52,6 +57,9 @@ public class AuthController {
         log.info("  in Create customer no error found");
         //ModelAndView response = new ModelAndView("customer/create");
         User u = userService.createUser(form);
+        //this line aof code authenticate the brand new user to application
+        //this session is passing into yhis method as argument and spring boot is auromatically managing the session
+        authenticatedUserService.authenticateNewUser(session,u.getEmail(),form.getPassword());
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/");
 
