@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,7 +37,8 @@ public class CustomerController {
 
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
-//     @GetMapping("/customer/delete/{customerId}")
+
+    //     @GetMapping("/customer/delete/{customerId}")
 //    public ModelAndView deleteCustomer(@PathVariable int customerId) {
 //        ModelAndView response = new ModelAndView("customer/search");
 //
@@ -52,18 +54,18 @@ public class CustomerController {
 //    }
     @GetMapping("/customer/edit/{id}")
     public ModelAndView editCustomer(@PathVariable int id,
-                                     @RequestParam(required = false) String success){
+                                     @RequestParam(required = false) String success) {
         log.info(success);
         log.info("### in /customer/edit #####");
         ModelAndView response = new ModelAndView("customer/create");
         Customer customer = customerDao.findById(id);
 
-        if (!StringUtils.isEmpty(success)){
-            response.addObject("success",success);
+        if (!StringUtils.isEmpty(success)) {
+            response.addObject("success", success);
         }
         CreateCustomerFormBean form = new CreateCustomerFormBean();
 
-        if (customer != null){
+        if (customer != null) {
             form.setId(customer.getId());
             form.setFirstName(customer.getFirstName());
             form.setLastName(customer.getLastName());
@@ -73,9 +75,10 @@ public class CustomerController {
         } else {
             log.warn("Customer with id " + id + "was not found");
         }
-        response.addObject("form",form);
+        response.addObject("form", form);
         return response;
     }
+
     @GetMapping("/customer/create")
     public ModelAndView createCustomer() {
         ModelAndView response = new ModelAndView("customer/create");
@@ -103,13 +106,12 @@ public class CustomerController {
 
     @GetMapping("/customer/search")
     public ModelAndView search(@RequestParam(required = false) String firstName,
-                               @RequestParam(required = false) String lastName)
-    {
+                               @RequestParam(required = false) String lastName) {
         ModelAndView response = new ModelAndView("customer/search");
         log.debug("in the customer search controller method First Name:  " + firstName + " Last Name: " + lastName);
-        if (firstName != null || lastName != null){
+        if (firstName != null || lastName != null) {
             List<Customer> customers;
-            if (firstName != null && lastName != null ) {
+            if (firstName != null && lastName != null) {
                 customers = customerDao.findByFirstNameOrLastName(firstName, lastName);
 
                 //List<Customer> customers CustomerDao.findByFnameAndLname(firstName+"%",lastName+"%")
@@ -127,19 +129,19 @@ public class CustomerController {
             }
         }
         return response;
+
     }
 
 
-
-        // the action attribute on the form tag is set to /customer/createSubmit so this method will be called when the user clicks the submit button
+    // the action attribute on the form tag is set to /customer/createSubmit so this method will be called when the user clicks the submit button
     @GetMapping("/customer/createSubmit")
-      public ModelAndView createCustomerSubmit(@Valid CreateCustomerFormBean form, BindingResult bindingResult) {
+    public ModelAndView createCustomerSubmit(@Valid CreateCustomerFormBean form, BindingResult bindingResult) {
         log.info("$$$$$ in customer createSubmit $$$$$");
         if (bindingResult.hasErrors()) {
             log.info("######################### In create customer submit - has errors #########################");
             ModelAndView response = new ModelAndView("customer/create");
 
-            for ( ObjectError error : bindingResult.getAllErrors() ) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info("error: " + error.getDefaultMessage());
             }
 
@@ -155,21 +157,38 @@ public class CustomerController {
         log.info("In create customer with incoming args");
         return response;
     }
+
     @GetMapping("customer/myCustomers")
-    public ModelAndView myCustomers(){
+    public ModelAndView myCustomers() {
         log.debug("inside customer/ mycustomers");
         ModelAndView response = new ModelAndView("customer/create");
         User user = authenticatedUserService.loadCurrentUser();
         //.setUserId(user.getId());
-       List<Customer> customers = customerDao.findByUserId(user.getId());
-       for(Customer customer : customers){
-           log.debug("First Name = " + customer.getFirstName() + " last name = " + customer.getLastName());
-       }
+        List<Customer> customers = customerDao.findByUserId(user.getId());
+        for (Customer customer : customers) {
+            log.debug("First Name = " + customer.getFirstName() + " last name = " + customer.getLastName());
+        }
 
         return response;
 
 
     }
 
+    @RequestMapping("/customer/detail")
+    public ModelAndView detail(@RequestParam Integer id) {
+        ModelAndView response = new ModelAndView("customer/detail");
 
+        Customer customer = customerDao.findById(id);
+
+        if ( customer == null ) {
+            log.warn("Customer with id " + id + " was not found");
+            // in a real application you might redirect to a 404 here because the custoemr was nto found
+            response.setViewName("redirect:/error/404");
+            return response;
+        }
+
+        response.addObject("customer", customer);
+
+        return response;
+    }
 }

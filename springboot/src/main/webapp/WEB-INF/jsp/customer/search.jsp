@@ -50,7 +50,8 @@
                     <td>Phone</td>
                     <td>City</td>>
                     <td>Image</td>
-
+                    <td>Edit</td>
+                    <td>Detail<td>
                 </tr>
                 <c:forEach items="${customers}" var="customer">
                     <tr>
@@ -60,7 +61,8 @@
                         <td>${customer.phone}</td>
                         <td>${customer.city}</td>
                         <td><img src="${customer.imageUrl}" style="max-width:100px"></td>
-                        <td><a href="/customer/edit/${customer.id}">Edit</a></td
+                        <td><a href="/customer/edit/${customer.id}">Edit</a></td>
+                        <td><a href="/customer/detail?id=${customer.id}">Detail</a></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -68,9 +70,4 @@
         </c:if>
     </div>
 </section>
-
-
-
-
-
 <jsp:include page="../include/footer.jsp"/>
