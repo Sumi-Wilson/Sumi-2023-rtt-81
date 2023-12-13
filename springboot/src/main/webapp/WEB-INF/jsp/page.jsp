@@ -1,13 +1,15 @@
-<jsp:include page="/include/header.jsp"/>
+<!DOCTYPE html>
+<html lang="en">
 
-<section>
-    <div class="bg-light2 pt-5 pb-5">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1 class="m-0">Admin Index</h1>
-            </div>
-        </div>
-    </div>
-</section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Project</title>
 
-<jsp:include page="/include/footer.jsp"/>
+</head>
+
+<body>
+    <h1>PAGE Page</h1>
+    <p>Here is a paragraph in  Page page.Adding more text to About.</p>
+</body>
+</html>
