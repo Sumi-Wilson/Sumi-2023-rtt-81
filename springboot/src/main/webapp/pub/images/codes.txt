@@ -1,0 +1,123 @@
+Searching by first Name
+@GetMapping("/customer/search")
+    public ModelAndView search(@RequestParam(required = false)String search) {
+        ModelAndView response = new ModelAndView("customer/search");
+
+        log.debug("In the customer search controller method: " + search);
+        if (search != null) {
+
+            List<Customer> customers = customerDao.findByFirstName(search);
+            response.addObject("customers",customers);
+            response.addObject("search",search);
+            for(Customer customer : customers){
+                log.debug("customer: id = " + customer.getId() + " lastname = " + customer.getLastName());
+            }
+
+
+        }
+
+        return response;
+    }
++++++++++++++++++++++++++++++++++++
+
+search by first or last name
+
+ @GetMapping("/customer/search")
+    public ModelAndView search(@RequestParam(required = false) String firstName,
+                               @RequestParam(required = false) String lastName)
+    {
+        ModelAndView response = new ModelAndView("customer/create");
+        log.debug("in the customer search controller method First Name:  " + firstName + " Last Name " + lastName);
+        if (firstName != null || lastName != null){
+            List<Customer> customers;
+            if (firstName != null && lastName != null ) {
+                customers = customerDao.findByFirstNameOrLastName(firstName,lastName);
+            } else if (firstName != null) {
+                // Search by first name only
+                customers = customerDao.findByFirstName(firstName);
+            } else {
+                customers = customerDao.findByLastName(lastName);
+
+            }
+
+        }
+        return response;
+    }
+
+<br>
+   <br>
+  Last Name : <input type="text" name= "search" placeholder = "Search by Last Name" value="${search}"/>
+
+
+search.jsp code
+
+<div class="row justify-content-center">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 text-end">
+                    <label for="firstNameSearch" class="form-label m-0 pt-1">First Name</label>
+                </div>
+                <div class="col-8 col-sm-9 col-md-6 col-lg-4">
+                    <input type="text" class="form-control" id="firstNameSearch" name="firstNameSearch" placeholder="Search by first name" value="${search}"/>
+                </div>
+            </div>
+
+
+<section>
+ <div class="container pt-5">
+<h1>Customer Search</h1>
+<form action="/customer/search">
+  <label for="firstName">First Name</label>
+    <input type="text" name= "firstName" placeholder = "Search by First Name" value="${firstName}"/>
+     <br>
+      <br>
+      <label for="lastName">Last Name</label>
+      <input type="text" name= "lastName" placeholder = "Search by Last Name" value="${lastName}"/>
+   <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<c:if test="${not empty customers}">
+            <h1 class="pt-5"> Customers Found ${customers.size()}</h1>
+            <table class="table">
+                <tr>
+                    <td>Id</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Phone</td>
+                    <td>City</td>
+                </tr>
+                <c:forEach items="${customers}" var="customer">
+                    <tr>
+                        <td>${customer.id}</td>
+                        <td>${customer.firstName}</td>
+                        <td>${customer.lastName}</td>
+                        <td>${customer.phone}</td>
+                        <td>${customer.city}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Project</title>
+
+</head>
+
+<body>
+    <h1>Index Page</h1>
+    <p>Here is a Index Page.Adding more text to this.</p>
+</body>
+</html>
+
+https://s3.amazonaws.com/images.seroundtable.com/google-rainbow-texture-1491566442.jpg
+
+<section>
+  <table>
+        <tr><td>First Name</td><td>${customer.firstName}</td></tr>
+        <tr><td>Last Name</td><td>${customer.LastName}</td></tr>
+        <tr><td>Image</td><td><img src="${customer.imageUrl}"></td></tr>
+  </table>
+<section>

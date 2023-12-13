@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.perscholas.springboot.database.dao.CustomerDAO;
 import org.perscholas.springboot.database.entity.Customer;
 import org.perscholas.springboot.database.entity.User;
@@ -18,12 +19,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 @Slf4j
@@ -188,6 +190,34 @@ public class CustomerController {
         }
 
         response.addObject("customer", customer);
+
+        return response;
+    }
+    @GetMapping("/customer/fileupload")
+    public ModelAndView fileUpload() {
+        ModelAndView response = new ModelAndView("customer/fileupload");
+
+        log.info(" In fileupload with no Args");
+        return response;
+    }
+    @PostMapping("/customer/fileUploadSubmit")
+    public ModelAndView fileUploadSubmit(@RequestParam("file") MultipartFile file) {
+        ModelAndView response = new ModelAndView("customer/fileupload");
+
+        log.info("Filename = " + file.getOriginalFilename());
+        log.info("Size     = " + file.getSize());
+        log.info("Type     = " + file.getContentType());
+
+
+        // Get the file and save it somewhere
+        File f = new File("./src/main/webapp/pub/images/" + file.getOriginalFilename());
+        try (OutputStream outputStream = new FileOutputStream(f.getAbsolutePath())) {
+            IOUtils.copy(file.getInputStream(), outputStream);
+        } catch (Exception e) {
+
+
+            e.printStackTrace();
+        }
 
         return response;
     }
