@@ -1,0 +1,619 @@
+C:\Users\sumig\Development\Your Repo\html\SBA
+pattern="^[a-zA-Z]+"
+ title="Please start username with a letter from a-z "
+
+pattern="^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$"
+title="please start with letter and follow name@mail.com"
+
+ <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+<script src="script.js"></script>
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+             <a href="index.html"><img src="../images/Kerala_Tourism_Logo.png" height="70px" width="70px"></a> 
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="Login.html">Login</a>
+                <a href="Register.html">Register</a>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <section div class="banner_container">
+            <div class="container">
+                <div class="left_section">
+                    
+                    <h1>KERALA TOURISM</h1>
+                    <p>Kerala is renowned for some of its unique cultural and geographical  characteristics.
+                        The practices and traditions handed down from generation to generation, 
+                        alongside some of the natural wonders that we have been blessed with have attracted
+                         people to this land for centuries. From the ancient healthcare system ofAyurveda to 
+                         our picturesque hill stations and diverse wildlife, we provide you with links 
+                         to access a wide range of our specialities. 
+                        We believe it is our duty to share these gifts with the rest of the world. </p>
+
+                </div>
+                 <div class="right_section">
+                    <h4>Kerala Tourism Destination</h4>
+                    <table border="1px">
+                        <tr><td>Destination</td><td>Description</td><td>Image</td></tr>
+                        <tr><td>Munnar</td><td>A hill station in the Western Ghats known for its stunning scenery, tea plantations, and Neelakurinji bloom.</td><td><img src="../images/Munnar.jpg" height="150px" width="250px"></td></tr>
+                        <tr><td>Alappuzha</td><td>A backwater region known for its houseboats, canals, and lush greenery.</td><td><img src="../images/Alappuzha.jpg"></td></tr>
+                    </table>
+                </div> 
+            </div>
+        </section>
+    </main>
+    <Footer style="background-color: grey">
+        <p> <center>Copyright &copy; 2023 keralatourism.com</center></p>
+    </Footer>
+</body>
+
+</html>
+
+style.css***********
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Header Section */
+
+header {
+    width: 100%;
+    background-color: rgba(23,23,23,0.15);
+     padding:20px ;
+     position: absolute;
+     top: 0;
+}
+header a {
+    text-decoration: none;
+    margin-right: 100px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.719);
+
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+
+}
+/* Header End */
+
+/* Banner Section */
+
+.banner_container {
+    width: 100%;
+    height: 100vh;
+     background-image: url(../images/wayanad-district.jpg) ; 
+      background-size: cover; 
+    /* background: linear-gradient(rgba(6,72,105,0.849),rgb(3,96,133)),url("../images/wp2649844.jpg"); */
+    background-attachment: fixed;
+    /* background-position: center; */
+    display: flex;
+    align-items: center;
+    
+}
+.banner_container .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    /* align-items: end; */   
+}
+
+/* Banner End */
+
+/* Left Section */
+.left_section {
+
+    width: 600px;
+}
+.left_section h1 {
+
+    margin: 0;
+    font-size: 40px;
+    color: red;
+
+} 
+.left_section p {
+
+    margin: 0;
+    letter-spacing: 1px;
+    color:rgba(255, 255, 255, 0.844) ;
+    margin-top: 18px;
+    line-height: 28px;
+}
+ 
+
+/* Left Section End */
+
+/* Right Section */
+
+.right_section {
+ width: 600px;
+ background-color: white;
+ border-radius: 15px ;
+ padding: 40px 0;
+
+
+}
+ .right_section h4 {
+
+    font-size: 20px;
+    width: 300px;
+    margin:auto;
+    margin-bottom: 30px;
+    color: rgba(136,136,136);
+
+} 
+.input_group {
+
+    width: 300px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column ;
+
+}
+
+.input_group label {
+
+    font-size: 14px;
+}
+
+.submit_section {
+
+    text-align: center;
+
+}
+
+
+
+ .submit_button {
+
+    color: blue;
+    background-color: white;
+    font-size: 15px;
+    /* border:none; */
+    padding: 10px  0;
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 150px;
+    cursor: pointer;
+} 
+
+************ login.html****************
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/loginstyle.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+             
+             <a href="index.html"><img src="../images/Kerala_Tourism_Logo.png" height="40px" width="40px"></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <section div class="banner_container">
+            <div class="container">
+
+                <div class="right_section">
+                    <h4>Login Form</h4>
+                    <form style="border: 1px solid #ccc; padding: 10px;" action="" autocomplete="off">
+                        <div class="input_group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="input_group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <div class="submit_section">
+                            <input value="Login" type="Submit" class="submit_button">
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
+
+
+&&&&&&&&&&&&register.html++++++++++++++++++++++++++
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="../styles/loginstyle.css"> 
+    <!-- <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(23, 23, 23, 0.15);
+            padding: none;
+            /* padding:20px */
+            position: absolute;
+            top: 0;
+        }
+
+        header a {
+            text-decoration: none;
+            margin-right: 100px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: red;
+
+        }
+
+        .banner_container .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            align-items: end;
+        }
+
+        .right_section {
+            width: 400px;
+            background-color: lightgray;
+            border-radius: 15px;
+            padding: 40px 0;
+        }
+
+        .right_section h4 {
+
+            font-size: 20px;
+            color: red;
+            width: 300px;
+            margin: auto;
+            margin-bottom: 30px;
+            /* color: rgba(136,136,136); */
+
+        }
+
+        .input_group {
+
+            width: 200px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .input_group label {
+
+            font-size: 14px;
+        }
+
+        .submit_section {
+
+            text-align: center;
+
+        }
+
+        .submit_button {
+
+            color: blue;
+            background-color: white;
+            font-size: 15px;
+            /* border:none; */
+            padding: 10px 0;
+            border-radius: 10px;
+            margin-top: 15px;
+            width: 150px;
+            cursor: pointer;
+        }
+    </style> -->
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="../images/Kerala_Tourism_Logo.png" height="40px" width="40px">
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+
+        </div>
+    </header>
+    <main>
+        <section div class="banner_container">
+            <div class="container">
+
+                <div class="right_section">
+                    <h4>Registeration Form</h4>
+                    <form style="border: 1px solid #ccc; padding: 10px;" action="" autocomplete="off">
+
+                        <div class="input_group">
+                            <label for="name">First Name</label>
+                            <input type="name" id="name" required>
+                        </div>
+
+                        <div class="input_group">
+                            <label for="name">Last Name</label>
+                            <input type="name" id="name" required>
+                        </div>
+
+
+                        <div class="input_group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="input_group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+
+                        <div class="input_group">
+                            <label for="password">Confirm Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+
+                        <div class="submit_section">
+                            <input value="Register" type="Submit" class="submit_button">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
+
+
+%%%%%%%%%%%%%loginstlye.css$$$$$$$$$$$$$$
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header Section */
+
+header {
+    width: 100%;
+    background-color: rgba(23, 23, 23, 0.15);
+     padding: 10px; 
+    position: absolute;
+    top: 0;
+}
+
+header a {
+    text-decoration: none;
+    margin-right: 100px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: red;
+    /* color: rgba(255,255,255,0.719); */
+
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+header a {
+    color: red;
+}
+
+/* Header End */
+
+/* Banner Section */
+
+.banner_container {
+    width: 100%;
+    height: 100vh;
+
+    /* background: linear-gradient(rgba(6,72,105,0.849),rgb(3,96,133)),url("../images/wp2649844.jpg"); */
+    /* background-attachment: fixed; */
+    /* background-position: center; */
+    display: flex;
+    align-items: center;
+
+}
+
+.banner_container .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    /* align-items: end; */
+}
+
+/* Banner End */
+
+/* Left Section */
+/* .left_section {
+
+    width: 600px;
+} */
+/* .left_section h1 {
+
+    margin: 0;
+    font-size: 40px;
+    color: red;
+
+}  */
+/* .left_section p {
+
+    margin: 0;
+    letter-spacing: 1px;
+    color:rgba(255, 255, 255, 0.844) ;
+    margin-top: 18px;
+    line-height: 28px;
+} */
+/* .left_section button {
+
+    color: blue;
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border:none;
+    padding: 12px  50px;
+    border-radius: 15px;
+    margin-top: 6px;
+    cursor: pointer;
+} */
+
+/* Left Section End */
+
+/* Right Section */
+
+.right_section {
+    width: 400px;
+    background-color: lightgray;
+    border-radius: 15px;
+    /* padding: 40px 0; */
+    padding:10px;
+}
+
+.right_section h4 {
+
+    font-size: 20px;
+    color: red;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 30px;
+    /* color: rgba(136,136,136); */
+
+}
+
+.input_group {
+
+    width: 300px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.input_group label {
+
+    font-size: 14px;
+}
+
+.submit_section {
+
+    text-align: center;
+
+}
+
+.submit_button {
+
+    color: blue;
+    background-color: white;
+    font-size: 15px;
+    /* border:none; */
+    padding: 10px 0;
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 150px;
+    cursor: pointer;
+}
+
+public ModelAndView createCustomer(CreateCustomerFormBean form)
+            {
+        ModelAndView response = new ModelAndView("customer/create");
+        System.out.println("FirstName: " + form.getXyz());
+        System.out.println("LastName: " + form.getLastName());
+        System.out.println("phone: " + form.getPhone());
+        System.out.println("city: " + form.getCity());
+
+        return response;
+    }
+
+public ModelAndView createCustomer(@RequestParam(required = false) String Xyz,       
+                                   @RequestParam(required = false) String lastName,  
+                                   @RequestParam(required = false) String phone,     
+                                   @RequestParam(required = false) String city)      
+        {                                                                            
+    ModelAndView response = new ModelAndView("customer/create");                     
+    System.out.println("FirstName: " + Xyz);                                         
+    System.out.println("LastName: " + lastName);                                     
+    System.out.println("phone: " + phone);                                           
+    System.out.println("city: " + city);                                             
+                                                                                     
+    return response;                                                                 
+}    
+
+
+<jsp:include page="../include/header.jsp"/>
+
+<section>
+ <div class="container pt-5"
+<h1>Customer Search</h1>
+<form>
+  <input type="text" name= "search" placeholder"Search by Name"/>
+   <input type="submit" class="btn btn-primary">Submit</button>
+<form>
+
+<jsp:include page="../include/footer.jsp"/>                                                                                
+   
+
+     
+
+
+
+
