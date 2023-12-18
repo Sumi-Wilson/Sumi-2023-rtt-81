@@ -30,7 +30,8 @@ public class CustomerService {
         if (customer == null) {
             customer = new Customer();
             User user = authenticatedUserService.loadCurrentUser();
-            customer.setUserId(user.getId());
+           // customer.setUserId(user.getId());
+            customer.setUser(user);
         }
         //set the incoming values to be save to the database
         customer.setFirstName(form.getFirstName());

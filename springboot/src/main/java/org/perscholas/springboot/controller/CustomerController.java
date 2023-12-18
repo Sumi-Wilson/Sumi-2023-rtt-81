@@ -114,6 +114,8 @@ public class CustomerController {
         if (firstName != null || lastName != null) {
             List<Customer> customers;
             if (firstName != null && lastName != null) {
+                response.addObject("firstName", firstName);
+                response.addObject("lastName", lastName);
                 customers = customerDao.findByFirstNameOrLastName(firstName, lastName);
 
                 //List<Customer> customers CustomerDao.findByFnameAndLname(firstName+"%",lastName+"%")

@@ -48,7 +48,7 @@
                     <td>First Name</td>
                     <td>Last Name</td>
                     <td>Phone</td>
-                    <td>City</td>>
+                    <td>City</td>
                     <td>Image</td>
                     <td>Edit</td>
                     <td>Detail</td>
